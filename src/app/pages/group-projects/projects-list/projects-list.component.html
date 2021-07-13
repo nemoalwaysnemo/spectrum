@@ -1,19 +1,15 @@
-<div class="accordions-container row">
+<div class="accordions-container row" *ngIf="projectList && projectList.length !== 0">
     <div class="accordion-container col-md-12 col-lg-12 col-xxxl-6">
-        <nb-accordion multi>
-            <ng-container *ngFor="let Accordion of layoutAccordion">
-                <nb-accordion-item>
-                    <nb-accordion-item-header>
-                        Product Details
-                    </nb-accordion-item-header>
-                    <nb-accordion-item-body>
-                        A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
-                        Originally, nebula was a name for any diffuse astronomical object,
-                        including galaxies beyond the Milky Way.
-                    </nb-accordion-item-body>
-                </nb-accordion-item>
-                
-            </ng-container>
+        <nb-accordion multi *ngFor="let project of projectList">
+            <nb-accordion-item>
+                <nb-accordion-item-header>
+                    {{ project.path }}
+                </nb-accordion-item-header>
+                <nb-accordion-item-body>
+                    last activity at: {{ project.last_activity_at | date:'short' }}
+                    <span>{{ project.description }}</span><br>
+                </nb-accordion-item-body>
+            </nb-accordion-item>
         </nb-accordion>
     </div>
 </div>

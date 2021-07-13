@@ -15,9 +15,7 @@ export class ProjectListComponent implements OnInit {
 
   @ViewChild('item', { static: true }) accordion;
 
-  projectList: any[] = [];
-
-  layoutAccordion: any[] = [1, 2, 3];
+  projectList: any;
   
   defaultInfo = {
     perpage: '100',
@@ -27,7 +25,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getYearlyActiveProjects();
+    this.getYearlyActiveProjects();
     // to do
     // this.getAllProjects();
   }
@@ -41,6 +39,7 @@ export class ProjectListComponent implements OnInit {
     const params = new HttpParams().set("last_activity_after", timePoint.toLocaleDateString()).set("per_page", default_param.perpage)
     .set("order_by", "last_activity_at").set("private_token", default_param.private_token);
     this.httpClient.request('get', url, { params }).subscribe((res) => {
+      this.projectList = res;
       console.info(res);
     })
   }
