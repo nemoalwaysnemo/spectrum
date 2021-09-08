@@ -10,5 +10,5 @@ export const environment = {
 
 export const GLOBALENV = {
   GROUP_API : 'https://gitlab-eu.factory.tools/api/v4/groups/',
-  PRIVATE_TOKEN: 'YopZJs-PxzQiMPYx-uFu',
+  PRIVATE_TOKEN: '',
 };
